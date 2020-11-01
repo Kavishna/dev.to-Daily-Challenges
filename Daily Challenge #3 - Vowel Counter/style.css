@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  background-color: rgb(33, 43, 53);
+}
+
+body > h1 {
+  color: aliceblue;
+  position: absolute;
+  top: 30px;
+}
+
+.container {
+  height: 220px;
+  width: 300px;
+  background-color: rgb(32, 88, 138);
+}
+
+.input {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+}
+
+input {
+  width: 80%;
+  height: 25px;
+  margin-bottom: 10px;
+  padding: 5px 5px;
+  border: none;
+  font-size: 15px;
+  background-color: rgb(148, 188, 223);
+}
+
+button {
+  border: none;
+  padding: 5px 15px;
+  border: 3px solid white;
+  background-color: transparent;
+  color: aliceblue;
+}
+
+input:focus {
+  outline: none;
+  background-color: aliceblue;
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  background-color: aliceblue;
+  color: black;
+}
