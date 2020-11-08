@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Challenge #9 - What's Your Number?</title>
+  </head>
+  <body>
+    <!-- https://dev.to/thepracticaldev/daily-challenge-9-what-s-your-number-3707 -->
 
+    <h1></h1>
+
+    <a
+      href="https://www.codewars.com/kata/create-phone-number"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Question</a
+    >
+    <script>
+      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+      function getNumber(arr) {
+        return `(${arr[0]}${arr[1]}${arr[2]}) ${arr[3]}${arr[4]}${arr[5]}-${arr[6]}${arr[7]}${arr[8]}${arr[9]}`;
+      }
+
+      const h1 = document.querySelector("h1");
+      h1.innerHTML = getNumber(numbers);
+    </script>
+  </body>
+</html>
