@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Challenge #11 - Cubic Numbers</title>
+  </head>
+  <body>
+    <label for="input">Enter the value</label>
+    <input type="text" name="input" id="input" />
+    <button id="btn">Check</button>
+    <p id="out"></p>
+    <script>
+      const input = document.getElementById("input");
+      const button = document.getElementById("btn");
+      const output = document.getElementById("out");
 
+      function isCubic(string) {
+        let numbers = string.split("");
+        let number = parseInt(string);
+        let cubicValues = numbers.map((val) => parseInt(val ** 3));
+        let total = cubicValues.reduce((total = 0, cur) => total + cur);
+        console.log(total);
+        return parseInt(string) === total ? true : false;
+      }
+
+      function sortString(string) {
+        const words = string.split(" ");
+        const numbers = words.filter((value) => !isNaN(value));
+        let num = [];
+        for (let number of numbers) {
+          if (number.length > 3) {
+            let tempNums = number.split("");
+            for (let i = 0; i < tempNums.length; i += 3) {
+              let temp;
+
+              if (
+                tempNums[i] !== undefined &&
+                tempNums[i + 1] !== undefined &&
+                tempNums[i + 2] !== undefined
+              ) {
+                temp = tempNums[i].concat(tempNums[i + 1], tempNums[i + 2]);
+              } else if (
+                tempNums[i] !== undefined &&
+                tempNums[i + 1] !== undefined &&
+                tempNums[i + 2] === undefined
+              ) {
+                temp = tempNums[i].concat(tempNums[i + 1]);
+              } else if (
+                tempNums[i] !== undefined &&
+                tempNums[i + 1] === undefined &&
+                tempNums[i + 2] === undefined
+              ) {
+                temp = tempNums[i];
+              }
+              num.push(temp);
+            }
+          } else {
+            num.push(number);
+          }
+        }
+        console.log(num);
+        return num;
+      }
+
+      button.addEventListener("click", () => {
+        let numbers = [];
+        numbers = sortString(input.value);
+
+        if (numbers.every((value) => isCubic(value))) {
+          let string = numbers.join(" ");
+
+          output.innerHTML = string + " lucky";
+        } else {
+          output.innerHTML = "unlucky";
+        }
+      });
+    </script>
+  </body>
+</html>
