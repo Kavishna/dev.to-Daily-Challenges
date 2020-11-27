@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Challenge #13 - Twice Linear</title>
+  </head>
+  <body>
+    <label for="">Enter n</label>
+    <input type="text" />
+    <button>find n</button>
+    <br />
+    <a
+      href="https://www.codewars.com/kata/5672682212c8ecf83e000050"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Question</a
+    >
 
+    <h2></h2>
+
+    <script>
+      const input = document.querySelector("input");
+      const btn = document.querySelector("button");
+      const h2 = document.querySelector("h2");
+
+      btn.addEventListener("click", () => {
+        const n = dblLinear(parseInt(input.value));
+        console.log(n);
+        h2.innerHTML = n;
+      });
+
+      function dblLinear(n) {
+        const genaratedArray = genaratePattern(n);
+        return genaratedArray[n];
+      }
+
+      function genaratePattern(num) {
+        let n = num * 10;
+        let arr = [1];
+        let y;
+        let z;
+
+        for (let i = 0; i < n; i++) {
+          let x = arr[i];
+          let y = 2 * x + 1;
+          let z = 3 * x + 1;
+
+          arr.push(z);
+          arr.push(y);
+
+          arr = arr.sort((a, b) => a - b);
+          arr = [...new Set(arr)];
+        }
+        return arr;
+      }
+    </script>
+  </body>
+</html>
