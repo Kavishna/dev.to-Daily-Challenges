@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Challenge #15 - Stop gninnipS My sdroW!</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+      }
 
+      input {
+        margin: 20px;
+      }
+
+      p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>gninnipS My sdroW</h1>
+      <input type="text" />
+      <button>spin it</button>
+      <h2 class="output"></h2>
+      <p style="color: red" class="rejected"></p>
+    </div>
+
+    <script>
+      let input = document.querySelector("input");
+      let btn = document.querySelector("button");
+
+      const spinWord = (input) => {
+        const words = input.value.split(" ");
+        const goodWords = [];
+        const badWords = [];
+
+        words.forEach((word) => {
+          /^[a-zA-Z]+$/.test(word) ? goodWords.push(word) : badWords.push(word);
+        });
+
+        const spinnedWords = goodWords.map((word) => {
+          return turnItAround(word);
+        });
+        // console.log(spinnedWords);
+
+        document.querySelector(".output").innerHTML = spinnedWords.join(" ");
+
+        if (badWords) {
+          document.querySelector(
+            ".rejected"
+          ).innerHTML = `rejected words <br> ${badWords.join(" ")}`;
+        }
+      };
+
+      //this function turn arround any words that lenth is >= 5
+      function turnItAround(input) {
+        if (input.length >= 5) {
+          //split word to array
+          let letterArr = input.split("");
+
+          let spinnedArray = [];
+
+          //turning arround the array
+          for (let i = input.length - 1; i >= 0; i--) {
+            //push values to new array
+            spinnedArray.push(letterArr[i]);
+          }
+          return spinnedArray.join("");
+        } else {
+          return input;
+        }
+      }
+
+      btn.addEventListener("click", () => spinWord(input));
+    </script>
+  </body>
+</html>
